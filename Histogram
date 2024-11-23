@@ -1,20 +1,42 @@
-# Input the 'Salaries and Wages' data
-salaries_wages <- c(388, 410, 444, 439, 437, 484, 553, 568, 495, 517, 583, 539, 546, 585, 629, 654, 759, 858, 990, 980)
+# Salaries and Wages data
+salaries_wages <- c(388, 410, 444, 439, 437, 484, 553, 568, 371, 327, 292, 293, 296, 325, 354, 358, 367, 414, 528, 615, 649)
 
-# Select a sample of size n = 30
-set.seed(123)  # Set seed for reproducibility
-sample_data <- sample(salaries_wages, 30, replace = TRUE)  # Sampling with replacement as n > length of dataset
+# Set the sample size
+sample_size <- 30
 
-# Print the sampled data for reference
-print("Sampled Data:")
+# Ensure reproducibility
+set.seed(123)  # Replace 123 with any other number for a different random sample
+
+# Select a random sample with replacement
+sample_data <- sample(salaries_wages, size = sample_size, replace = TRUE)# Extended Salaries and Wages data
+salaries_wages <- c(388, 410, 444, 439, 437, 484, 553, 568, 495, 517, 583, 539, 546, 585, 629, 654, 759, 858, 990, 980, 725, 802, 876, 645, 910, 950, 600, 575, 620, 700)
+
+# Calculate the range of data
+data_range <- range(salaries_wages)
+range_diff <- diff(data_range)
+
+# Determine the number of bins using Sturges' formula
+num_bins <- ceiling(1 + log2(length(salaries_wages)))
+
+# Calculate bin width
+bin_width <- ceiling(range_diff / num_bins)
+
+# Create breakpoints for bins
+breaks <- seq(data_range[1], data_range[2] + bin_width, by = bin_width)
+
+# Plot the histogram
+hist(
+  salaries_wages,
+  breaks = breaks,
+  col = "skyblue",
+  border = "black",
+  main = "Histogram of Grouped Salaries",
+  xlab = "Salaries and Wages (Grouped)",
+  ylab = "Frequency",
+  right = FALSE
+)
+
+
+# Display the selected sample
+cat("Selected Sample (Size 30):\n")
 print(sample_data)
-
-# Create a histogram using base R without explicitly defining breaks
-hist(sample_data,
-     main = "Histogram of Salaries and Wages (n = 30)",
-     xlab = "Salaries and Wages",
-     col = "lightblue",
-     border = "black",
-     xlim = range(salaries_wages),  # Set limits to the original data range
-     breaks = "FD")  # Use 'FD' for Freedman-Diaconis rule for breaks
-
