@@ -1,0 +1,42 @@
+# Data for Purchased Goods, Aircraft Ownership, and Daily Utilization per Aircraft
+purchased_goods <- c(644, 784, 756, 650, 631, 864, 961, 873, 1021, 1354, 1897, 2200, 2236, 3644, 1844, 2478, 3124, 3166, 2951, 2775, 1836)
+aircraft_ownership <- c(445, 411, 387, 396, 408, 444, 485, 512, 399, 358, 315, 366, 391, 414, 435, 379, 229, 295, 280, 293, 291)
+daily_utilization <- c(9.28, 9.40, 9.59, 9.78, 9.95, 9.85, 9.22, 8.96, 9.00, 9.81, 10.36, 10.57, 10.65, 9.96, 10.23, 10.46, 10.39, 10.01, 10.07, 9.65, 9.18)
+
+# Combine data into a data frame
+data <- data.frame(
+  Purchased_Goods = purchased_goods,
+  Aircraft_Ownership = aircraft_ownership,
+  Daily_Utilization = daily_utilization
+)
+
+# Plot box plots
+par(mfrow = c(1, 3))  # Set layout to display multiple plots in a row
+
+# Box plot for Purchased Goods
+boxplot(
+  data$Purchased_Goods, 
+  main = "Box Plot: Purchased Goods", 
+  col = "lightblue", 
+  ylab = "Cost ($)"
+)
+
+# Box plot for Aircraft Ownership
+boxplot(
+  data$Aircraft_Ownership, 
+  main = "Box Plot: Aircraft Ownership", 
+  col = "lightgreen", 
+  ylab = "Cost ($)"
+)
+
+# Box plot for Daily Utilization
+boxplot(
+  data$Daily_Utilization, 
+  main = "Box Plot: Daily Utilization", 
+  col = "lightpink", 
+  ylab = "Hours"
+)
+
+# Reset plot layout
+par(mfrow = c(1, 1))
+
