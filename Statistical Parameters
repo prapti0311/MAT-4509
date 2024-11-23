@@ -1,0 +1,28 @@
+
+# Extended Salaries and Wages data
+salaries_wages <- c(388, 410, 444, 439, 437, 484, 553, 568, 495, 517, 583, 539, 546, 585, 629, 654, 759, 858, 990, 980, 725, 802, 876, 645, 910, 950, 600, 575, 620, 700)
+
+# Calculate statistical measures
+mean_val <- mean(salaries_wages)  # Mean
+median_val <- median(salaries_wages)  # Median
+mode_val <- as.numeric(names(sort(table(salaries_wages), decreasing = TRUE)[1]))  # Mode
+sd_val <- sd(salaries_wages)  # Standard Deviation
+variance_val <- var(salaries_wages)  # Variance
+quartiles <- quantile(salaries_wages)  # Quartiles
+decile_9 <- quantile(salaries_wages, probs = 0.9)  # 9th Decile
+percentile_10 <- quantile(salaries_wages, probs = 0.1)  # 10th Percentile
+range_val <- range(salaries_wages)  # Range
+range_diff <- diff(range_val)
+
+# Display results
+cat("Mean:", mean_val, "\n")
+cat("Median:", median_val, "\n")
+cat("Mode:", mode_val, "\n")
+cat("Standard Deviation:", sd_val, "\n")
+cat("Variance:", variance_val, "\n")
+cat("Quartiles:\n")
+print(quartiles)
+cat("9th Decile:", decile_9, "\n")
+cat("10th Percentile:", percentile_10, "\n")
+cat("Range:", range_val, "\n")
+cat("Range Difference:", range_diff, "\n")
